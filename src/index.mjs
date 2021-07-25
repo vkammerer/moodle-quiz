@@ -2,7 +2,8 @@ import { readFileSync, writeFileSync } from "fs";
 import path from "path";
 import csvtojson from "csvtojson";
 
-const TEST_NAME = "LASC211_S1_test_2";
+const TEST_NAME = "LASC206_S2_test_1";
+const HAS_MGMT = true;
 
 // Ok when ran from root
 const __dirname = path.resolve("src");
@@ -22,8 +23,9 @@ const question_genus = readTemplate("question_genus");
 const question_specie = readTemplate("question_specie");
 const question_common = readTemplate("question_common");
 const question_env = readTemplate("question_env");
+const question_mgmt = readTemplate("question_mgmt");
 
-const questionsSetTemplate = () => `
+const questionsSetTemplate = (hasMgmt) => `
 ${question_genus}
 
 ${question_specie}
@@ -31,6 +33,8 @@ ${question_specie}
 ${question_common}
 
 ${question_env}
+
+${hasMgmt ? question_mgmt : ""}
 `;
 
 const quiz = await csvtojson({ noheader: true, ignoreEmpty: true })
@@ -50,7 +54,7 @@ const questionsXml = questionsSets
         acc
           .replaceAll(`{{${field}}}`, set[index])
           .replaceAll("{{PLANT_NUMBER_FORMATTED}}", addZeroIfNeeded(set[0])),
-      questionsSetTemplate()
+      questionsSetTemplate(HAS_MGMT)
     )
   )
   .join("");
