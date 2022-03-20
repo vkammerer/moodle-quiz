@@ -3,7 +3,7 @@
       <text>Plant {{PLANT_NUMBER_FORMATTED}}.e</text>
     </name>
     <questiontext format="html">
-      <text><![CDATA[<p dir="ltr" style="text-align: left;"><strong>PLANT {{PLANT_NUMBER}}</strong> - What are the <strong>management instructions</strong>&nbsp;for this plant?</p>]]></text>
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><strong>PLANT {{PLANT_NUMBER}}</strong> - What are the <strong>maintenance requirements</strong>&nbsp;for this plant?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text></text>
